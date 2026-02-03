@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Minimal Dark</title>
+    <style>
+        :root {
+            --bg-color: #000000;       /* Nero assoluto per lo sfondo */
+            --card-bg: #111111;        /* Grigio quasi nero per il contenitore */
+            --category-bg: #1a1a1a;    /* Grigio scuro per i tasti categoria */
+            --text-white: #ffffff;     /* Bianco puro per i titoli */
+            --text-light-gray: #e0e0e0;/* Grigio chiaro per i nomi dei piatti */
+            --text-muted: #888888;     /* Grigio spento per gli ingredienti */
+            --border-color: #333333;   /* Colore per i bordi sottili */
+        }
+
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+            line-height: 1.6; 
+            margin: 0; 
+            padding: 15px; 
+            background-color: var(--bg-color); 
+            color: var(--text-light-gray); 
+        }
+
+        .container { 
+            max-width: 600px; 
+            margin: auto; 
+            background: var(--card-bg); 
+            padding: 25px; 
+            border-radius: 12px; 
+            border: 1px solid var(--border-color);
+        }
+
+        header { 
+            text-align: center; 
+            margin-bottom: 30px; 
+            padding-bottom: 20px; 
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        h1 { margin: 0; color: var(--text-white); text-transform: uppercase; letter-spacing: 2px; font-size: 1.6rem; }
+        .subtitle { color: var(--text-muted); font-size: 0.9rem; margin-top: 5px; }
+
+        /* Categorie */
+        .category { 
+            background: var(--category-bg); 
+            color: var(--text-white); 
+            padding: 16px; 
+            margin-top: 12px; 
+            cursor: pointer; 
+            border-radius: 8px; 
+            font-weight: bold; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center;
+            border: 1px solid var(--border-color);
+            transition: 0.2s;
+        }
+        .category:hover { background: #252525; }
+
+        /* Contenitore Prodotti */
+        .products { display: none; padding: 5px 15px; }
+        
+        /* Singolo Prodotto */
+        .item { padding: 15px 0; border-bottom: 1px solid var(--border-color); }
+        .item:last-child { border-bottom: none; }
+        
+        .item-main { display: flex; justify-content: space-between; align-items: baseline; }
+        .item-name { font-weight: bold; font-size: 1.1em; color: var(--text-white); }
+        .item-price { font-weight: bold; color: var(--text-light-gray); margin-left: 10px; }
+        .ingredients { font-size: 0.85em; color: var(--text-muted); margin-top: 4px; }
+
+        /* Footer e Social */
+        footer { margin-top: 40px; text-align: center; border-top: 1px solid var(--border-color); padding-top: 20px; }
+        .contact-info { color: var(--text-light-gray); margin-bottom: 15px; font-size: 0.9rem; }
+        .social-links { display: flex; flex-direction: column; gap: 10px; }
+        
+        .social-btn {
+            text-decoration: none; color: var(--text-white); padding: 12px; border-radius: 6px;
+            font-size: 0.9em; font-weight: bold; border: 1px solid var(--border-color);
+            background: transparent; transition: 0.3s;
+        }
+        .social-btn:hover { background: var(--text-white); color: black; }
+
+        @media (min-width: 480px) {
+            .social-links { flex-direction: row; justify-content: center; }
+        }
+/* 1. Controllo dimensione LOGO principale */
+.logo {
+    display: block;
+    margin: 0 auto 0px auto; /* Centrato con spazio sotto */
+    max-width: 300px;          /* Regola questa cifra per la grandezza del tuo logo */
+    height: auto;
+}
+
+/* 2. Controllo icone SOCIAL nel footer */
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.social-btn {
+    width: 20px;               /* Dimensione del cerchio */
+    height: 20px;
+    border: 1px solid var(--border-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+}
+
+.social-btn img {
+    width: 60px;               /* Dimensione dell'icona dentro il cerchio */
+    height: 60px;
+    object-fit: contain;
+    
+    opacity: 2;
+}
+
+.social-btn:hover img {
+    opacity: 1;
+}
+    </style>
+    </style>
+
+</head>
+<body>
+
+<div class="container">
+    <header>
+    <img src="logo1.png" alt="Logo Ristorante" class="logo">
+    <h1>MENU</h1>
+    <p class="subtitle"></p>
+</header>
+
+    <div class="category" onclick="toggleCategory('BEERS')">
+       BEERS<span>▾</span>
+    </div>
+    <div id="BEERS" class="products">
+        <div class="item">
+            <div class="item-main">
+                <span class="item-name">BECKS</span>
+                <span class="item-price">€3.00</span>
+             </div>
+<div class="item">
+            <div class="item-main">
+                <span class="item-name">BJORN</span>
+                <span class="item-price">€3.50</span>
+             </div>
+<div class="item">
+            <div class="item-main">
+                <span class="item-name">CERES</span>
+                <span class="item-price">€3.50</span>
+             </div>
+<div class="item">
+            <div class="item-main">
+                <span class="item-name">CORONA</span>
+                <span class="item-price">€3.50</span>
+             </div>
+<div class="item">
+            <div class="item-main">
+                <span class="item-name">HEINEKEN</span>
+                <span class="item-price">€3.00</span>
+             </div>
+<div class="item">
+            <div class="item-main">
+                <span class="item-name">LEFFE BIONDA</span>
+                <span class="item-price">€4.50</span>
+             </div>
+<div class="item">
+            <div class="item-main">
+                <span class="item-name">LEFFE ROSSA</span>
+                <span class="item-price">€5.00</span>
+             </div>
+<div class="item">
+            <div class="item-main">
+                <span class="item-name">NASTRO AZZURRO</span>
+                <span class="item-price">€3.00</span>
+             </div>
+<div class="item">
+            <div class="item-main">
+                <span class="item-name">PAULANER WEISSBIER   0,5 L
+</span>
+                <span class="item-price">€4.00</span>
+             </div>
+<div class="item">
+            <div class="item-main">
+                <span class="item-name">SUPER TENNET'S   33 CL</span>
+                <span class="item-price">€3.50</span>
+             </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+     </div>
+</div>
+
+    <div class="category" onclick="toggleCategory('LONG DRINK')">
+        LONG DRINK<span>▾</span>
+    </div>
+
+  
+    <div id="LONG DRINK" class="products">
+<div style="margin-top: 25px; border-top: 1px solid var(--border-color); padding-top: 10px; opacity: 0.6;">
+        <span style="font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted);">gin</span>
+    </div>
+
+            
+        
+            <div class="item">
+<div class="item-main">
+                <span class="item-name">GIN MARE</span>
+                <span class="item-price">€8.00</div></span>
+            <div class="ingredients">TONICA - LEMON </div>
+<div class="item">
+            <div class="item-main">
+                <span class="item-name">GORDON'S GIN</span>
+                <span class="item-price">€6.00</span>
+            </div>
+            <div class="ingredients">TONICA - LEMON </div>
+
+        <div class="item">
+            <div class="item-main">
+                <span class="item-name">HENDRICK'S GIN</span>
+                <span class="item-price">€8.00</span>
+            </div>
+            <div class="ingredients">TONICA - LEMON </div>
+        
+     <div class="item">
+            <div class="item-main">
+                <span class="item-name">TANQUERAY GIN</span>
+                <span class="item-price">€6.00</span>
+            </div>
+            <div class="ingredients">TONICA - LEMON </div>
+        
+ <div class="item">
+            <div class="item-main">
+                <span class="item-name">SCHLOSS GIN</span>
+                <span class="item-price">€8.00</span>
+            </div>
+            <div class="ingredients">TONICA - LEMON </div>
+       
+    </div>
+
+
+
+    
+
+ <div style="margin-top: 25px; border-top: 1px solid var(--border-color); padding-top: 10px; opacity: 0.6;">
+        <span style="font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted);">vodka</span>
+    </div>
+
+          </div>
+  </div>
+ </div>   
+    
+   </div>
+            <div class="item">
+<div class="item-main">
+                <span class="item-name">BELVEDERE VODKA</span>
+                <span class="item-price">€8.00</div></span>
+            <div class="ingredients">TONICA - LEMON - RED BULL</div>
+
+        <div class="item">
+            <div class="item-main">
+                <span class="item-name">GREY GOOSE VODKA</span>
+                <span class="item-price">€8.00</span>
+            </div>
+            <div class="ingredients">TONICA - LEMON - RED BULL</div>
+        
+     <div class="item">
+            <div class="item-main">
+                <span class="item-name">SKYY VODKA</span>
+                <span class="item-price">€6.00</span>
+            </div>
+            <div class="ingredients">TONICA - LEMON - RED BULL</div>
+        </div>
+</div>
+
+    </div>
+</div>
+
+<div class="category" onclick="toggleCategory('COCKTAILS')">
+        COCKTAILS<span>▾</span>
+    </div>
+
+  
+    <div id="COCKTAILS" class="products">
+            
+        
+            <div class="item">
+
+
+    <div class="item">
+        <div class="item-main"><span class="item-name">AMERICANO</span><span class="item-price">€6.00</span></div>
+        <div class="ingredients">Camapri Bitter - Vermut Rosso - Soda</div>
+    </div>
+
+    <div class="item">
+        <div class="item-main"><span class="item-name">BARBIE</span><span class="item-price">€6.00</span></div>
+        <div class="ingredients">Vodka Fragola - Vodka Pesca - Granatina - Succo Ananas</div>
+    </div>
+
+ 
+
+    <div class="item">
+        <div class="item-main"><span class="item-name">BOULEVARDIER</span><span class="item-price">€8.00</span></div>
+        <div class="ingredients">Campari Bitter - Vermut Rosso - Jack Daniel's</div>
+    </div>
+
+    <div class="item">
+        <div class="item-main"><span class="item-name">CAPIROSKA</span><span class="item-price">€7.00</span></div>
+        <div class="ingredients">Lime e Zucchero di Canna Pestati - Ghiaccio Tritato - Fragola - Vodka - Soda </div>
+    </div>
+
+    <div class="item">
+        <div class="item-main"><span class="item-name">CAPO & TONIC</span><span class="item-price">€6.00</span></div>
+        <div class="ingredients">Amaro del Capo - Tonica</div>
+    </div>
+
+    <div class="item">
+        <div class="item-main"><span class="item-name">CORONA SUNRISE</span><span class="item-price">€6.00</span></div>
+        <div class="ingredients">Birra Corona - Granatina - Succo d' Arancia - Tequila</div>
+    </div>
+
+    <div class="item">
+        <div class="item-main"><span class="item-name">COSMOPOLITAN*</span><span class="item-price">€6.00</span></div>
+        <div class="ingredients">Vodka - Triple Sec - Succo di Lime - Succo di Cranberry</div>
+    </div>
+
+    <div class="item">
+        <div class="item-main"><span class="item-name">CUBA LIBRE</span><span class="item-price">€7.00</span></div>
+        <div class="ingredients">Lime e Zucchero di Canna Pestati - Havana 7 - Coca Cola</div>
+    </div>
+
+    <div class="item">
+        <div class="item-main"><span class="item-name">DISARONNO SOUR</span><span class="item-price">€6.00</span></div>
+        <div class="ingredients">Disaronno - Sweet and Sour - Soda</div>
+    </div>
+
+    <div class="item">
+        <div class="item-main"><span class="item-name">FERNANDITO</span><span class="item-price">€6.00</span></div>
+        <div class="ingredients">Fernet Branca - Coca Cola</div>
+    </div>
+
+    <div class="item">
+        <div class="item-main"><span class="item-name">HURRICANE</span><span class="item-price">€6.00</span></div>
+        <div class="ingredients">Rum Scuro - Rum Bianco - Succo d' Arancia Rossa - Succo d' Arancia</div>
+    </div>
+
+    <div class="item">
+        <div class="item-main"><span class="item-name">INVISIBLE</span><span class="item-price">€6.00</span></div>
+        <div class="ingredients">Vodka - Gin - Triple Sec - Rum Bianco - Soda</div>
+    </div>
+
+    <div class="item">
+        <div class="item-main"><span class="item-name">JAPANESE ICED TEA</span><span class="item-price">€6.00</span></div>
+        <div class="ingredients">Vodka - Gin - Rum Bianco - Sweet and Sour - Midori - Lemon</div>
+    </div>
+
+    <div class="item">
+        <div class="item-main"><span class="item-name">LONDON MULE*</span><span class="item-price">€7.00</span></div>
+        <div class="ingredients">Gin - Succo di Lime - Ginger Beer</div>
+    </div>
+
+    <div class="item">
+        <div class="item-main"><span class="item-name">LONG ISLAND ICED TEA</span><span class="item-price">€7.00</span></div>
+        <div class="ingredients">Vodka - Gin - Triple Sec - Rum Bianco - Sweet and Sour - Coca Cola</div>
+    </div>
+
+    <div class="item">
+        <div class="item-main"><span class="item-name">LUCIFER</span><span class="item-price">€6.00</span></div>
+        <div class="ingredients">Campari Bitter - Vermut Rosso - Jack Daniel's - Soda</div>
+    </div>
+
+    <div class="item">
+        <div class="item-main"><span class="item-name">MATRIOSKA</span><span class="item-price">€6.00</span></div>
+        <div class="ingredients">Jägermeister - Red Bull</div>
+    </div>
+
+    <div class="item">
+        <div class="item-main"><span class="item-name">MIAMI ICED TEA</span><span class="item-price">€6.00</span></div>
+        <div class="ingredients">Gin - Vodka - Triple Sec - Sweet And Sour - Blue Curacao - Lemon </div>
+    </div>
+
+    <div class="item">
+        <div class="item-main"><span class="item-name">MILANO TORINO</span><span class="item-price">€6.00</span></div>
+        <div class="ingredients">Campari Bitter - Vermut Rosso</div>
+    </div>
+
+    <div class="item">
+        <div class="item-main"><span class="item-name">MOJITO*</span><span class="item-price">€7.00</span></div>
+        <div class="ingredients">Lime e Zucchero di Canna Pestati - Menta - Ghiaccio Tritato - Rum Bianco - Soda</div>
+    </div>
+
+    <div class="item">
+        <div class="item-main"><span class="item-name">MONTE & COLA</span><span class="item-price">€6.00</span></div>
+        <div class="ingredients">Montenegro - Coca Cola</div>
+    </div>
+
+    <div class="item">
+        <div class="item-main"><span class="item-name">MOSKOW MULE*</span><span class="item-price">€7.00</span></div>
+        <div class="ingredients">Vodka - Succo di Lime - Ginger Beer</div>
+    </div>
+
+    <div class="item">
+        <div class="item-main"><span class="item-name">NEGRONI</span><span class="item-price">€7.00</span></div>
+        <div class="ingredients">Campari Bitter - Vermut Rosso - Gin</div>
+    </div>
+
+    <div class="item">
+        <div class="item-main"><span class="item-name">NEGRONI SBAGLIATO</span><span class="item-price">€7.00</span></div>
+        <div class="ingredients">Campari Bitter - Vermut Rosso - Prosecco</div>
+    </div>
+
+    <div class="item">
+        <div class="item-main"><span class="item-name">NEGROSKI</span><span class="item-price">€7.00</span></div>
+        <div class="ingredients">Campari Bitter - Vermut Rosso - Vodka</div>
+    </div>
+
+    <div class="item">
+        <div class="item-main"><span class="item-name">PIÑA COLADA</span><span class="item-price">€6.00</span></div>
+        <div class="ingredients">Rum Bianco - Malibu - Succo Ananas</div>
+    </div>
+
+    <div class="item">
+        <div class="item-main"><span class="item-name">RUM & COLA</span><span class="item-price">€7.00</span></div>
+        <div class="ingredients">Havana 7 - Coca Cola</div>
+    </div>
+
+    <div class="item">
+        <div class="item-main"><span class="item-name">SATISFACTION</span><span class="item-price">€6.00</span></div>
+        <div class="ingredients">Gin - Vodka - Succo di Lime - soda </div>
+    </div>
+
+    <div class="item">
+        <div class="item-main"><span class="item-name">TEQUILA SUNRISE</span><span class="item-price">€6.00</span></div>
+        <div class="ingredients">Tequila - Succo di Arancia - Granatina</div>
+    </div>
+
+    <div class="item">
+        <div class="item-main"><span class="item-name">WHISKEY & COLA</span><span class="item-price">€7.00</span></div>
+        <div class="ingredients">Jack Daniel's - Coca Cola</div>
+    </div>
+
+    <div class="item">
+        <div class="item-main"><span class="item-name">WHISKEY SOUR*</span><span class="item-price">€6.00</span></div>
+        <div class="ingredients">Jack Daniel's - Succo di Lime - Zucchero - Albume d'Uovo.</div>
+    </div>
+</div>
+
+ 
+</div>
+<div class="category" onclick="toggleCategory('aperitif')">
+    APERITIF <span>▾</span>
+</div>
+<div id="aperitif" class="products">
+
+    <div class="item">
+        <div class="item-main"><span class="item-name">CAMPARISODA</span><span class="item-price">€3.50</span></div>
+    </div>
+
+    <div class="item">
+        <div class="item-main"><span class="item-name">CAMPARISODA & GIN</span><span class="item-price">€5.00</span></div>
+    </div>
+
+    <div class="item">
+        <div class="item-main"><span class="item-name">CAMPARISODA & MARTINI</span><span class="item-price">€4.00</span></div>
+    </div>
+
+    <div class="item">
+        <div class="item-main"><span class="item-name">CAMPARISODA & PROSECCO</span><span class="item-price">€4.00</span></div>
+    </div>
+
+    <div class="item">
+        <div class="item-main"><span class="item-name">CRODINO</span><span class="item-price">€3.50</span></div>
+    </div>
+
+    <div class="item">
+        <div class="item-main"><span class="item-name">CRODINO & APEROL</span><span class="item-price">€4.00</span></div>
+    </div>
+
+    <div class="item">
+        <div class="item-main"><span class="item-name">CRODINO & MARTINI</span><span class="item-price">€4.00</span></div>
+    </div>
+
+    <div class="item">
+        <div class="item-main"><span class="item-name">CRODINO & PROSECCO</span><span class="item-price">€4.00</span></div>
+    </div>
+
+    <div class="item">
+        <div class="item-main"><span class="item-name">MIMOSA</span><span class="item-price">€4.00</span></div>
+    </div>
+
+    <div class="item">
+        <div class="item-main"><span class="item-name">PROSECCO</span><span class="item-price">€3.50</span></div>
+    </div>
+
+    <div class="item">
+        <div class="item-main"><span class="item-name">SPRITZ</span><span class="item-price">€5.00</span></div>
+        <div class="ingredients">Aperol - Campari - Hugo*</div>
+    </div>
+<div class="item">
+        <div class="item-main"><span class="item-name">THEOREMA Vino Rosato Bottiglia</span><span class="item-price">€25.00</span></div>
+    </div>
+
+    <div class="item">
+        <div class="item-main"><span class="item-name">THEOREMA Vino Rosato Calice</span><span class="item-price">€4.00</span></div>
+    </div>
+
+    <div class="item">
+        <div class="item-main"><span class="item-name">DON FABRIZIO Vino Rosso BOTTIGLIA</span><span class="item-price">€30.00</span></div>
+    </div>
+
+    <div class="item">
+        <div class="item-main"><span class="item-name">DON FABRIZIO Vino Rosso Calice</span><span class="item-price">€5.00</span></div>
+    </div>
+
+</div>
+ 
+ 
+<div class="category" onclick="toggleCategory('amari')">
+    AMARI E GRAPPE <span>▾</span>
+</div>
+<div id="amari" class="products">
+
+    <div class="item">
+        <div class="item-main"><span class="item-name">BAILEYS</span><span class="item-price">€3.50</span></div>
+    </div>
+
+    <div class="item">
+        <div class="item-main"><span class="item-name">BRANCA-MENTA</span><span class="item-price">€3.50</span></div>
+    </div>
+
+    <div class="item">
+        <div class="item-main"><span class="item-name">CAPO</span><span class="item-price">€3.50</span></div>
+    </div>
+
+    <div class="item">
+        <div class="item-main"><span class="item-name">DISARONNO</span><span class="item-price">€3.50</span></div>
+    </div>
+
+    <div class="item">
+        <div class="item-main"><span class="item-name">FERNET-BRANCA</span><span class="item-price">€3.50</span></div>
+    </div>
+
+    <div class="item">
+        <div class="item-main"><span class="item-name">JÄGERMEISTER</span><span class="item-price">€3.50</span></div>
+    </div>
+
+    <div class="item">
+        <div class="item-main"><span class="item-name">JEFFERSON</span><span class="item-price">€3.50</span></div>
+    </div>
+
+    <div class="item">
+        <div class="item-main"><span class="item-name">MONTENEGRO</span><span class="item-price">€3.50</span></div>
+    </div>
+
+    <div class="item">
+        <div class="item-main"><span class="item-name">PETRUS</span><span class="item-price">€3.50</span></div>
+    </div>
+
+    <div style="margin-top: 20px; border-top: 1px dashed var(--border-color); padding-top: 10px;">
+        <div class="item">
+            <div class="item-main"><span class="item-name">903 BARRIQUE</span><span class="item-price">€3.50</span></div>
+        </div>
+
+        <div class="item">
+            <div class="item-main"><span class="item-name">FRATTINA</span><span class="item-price">€3.50</span></div>
+        </div>
+    </div>
+
+
+ </div>
+<div class="category" onclick="toggleCategory('spirits')">
+    RUM & WHISKEY <span>▾</span>
+</div>
+<div id="spirits" class="products">
+<div style="margin-top: 25px; border-top: 1px solid var(--border-color); padding-top: 10px; opacity: 0.6;">
+        <span style="font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted);">rum</span>
+    </div>
+
+
+    <div class="item">
+        <div class="item-main"><span class="item-name">BARCELO’ IMPERIAL</span><span class="item-price">€7.00</span></div>
+    </div>
+
+    <div class="item">
+        <div class="item-main"><span class="item-name">DIPLOMATICO</span><span class="item-price">€7.00</span></div>
+    </div>
+
+    <div class="item">
+        <div class="item-main"><span class="item-name">HAVANA 7</span><span class="item-price">€3.50</span></div>
+    </div>
+
+    <div class="item">
+        <div class="item-main"><span class="item-name">ZACAPA 23</span><span class="item-price">€12.00</span></div>
+    </div>
+
+    <div style="margin-top: 25px; border-top: 1px solid var(--border-color); padding-top: 10px; opacity: 0.6;">
+        <span style="font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted);">Whiskey</span>
+    </div>
+
+    <div class="item">
+        <div class="item-main"><span class="item-name">DALMORE</span><span class="item-price">€18.00</span></div>
+    </div>
+
+    <div class="item">
+        <div class="item-main"><span class="item-name">JACK DANIEL’S</span><span class="item-price">€3.50</span></div>
+    </div>
+
+    <div class="item">
+        <div class="item-main"><span class="item-name">LAGAVULIN</span><span class="item-price">€7.00</span></div>
+    </div>
+
+    <div class="item">
+        <div class="item-main"><span class="item-name">OBAN</span><span class="item-price">€7.00</span></div>
+    </div>
+
+    <div class="item">
+        <div class="item-main"><span class="item-name">TALISKER</span><span class="item-price">€7.00</span></div>
+    </div>
+</div>
+ 
+ 
+
+<div class="category" onclick="toggleCategory('soft-drinks')">
+    SOFT DRINKS <span>▾</span>
+</div>
+<div id="soft-drinks" class="products">
+
+    <div class="item">
+        <div class="item-main"><span class="item-name">ACQUA</span><span class="item-price">€1.00</span></div>
+    </div>
+
+    <div class="item">
+        <div class="item-main"><span class="item-name">BRASILENA</span><span class="item-price">€1.50</span></div>
+    </div>
+
+    <div class="item">
+        <div class="item-main"><span class="item-name">COCA COLA</span><span class="item-price">€2.50</span></div>
+    </div>
+
+    <div class="item">
+        <div class="item-main"><span class="item-name">COCKTAIL ALCOHOL FREE</span><span class="item-price">€4.00</span></div>
+        <div class="ingredients">Specifica qui il tipo di cocktail analcolico...</div>
+    </div>
+
+    <div class="item">
+        <div class="item-main"><span class="item-name">ESTATHÉ L/P</span><span class="item-price">€2.50</span></div>
+    </div>
+
+    <div class="item">
+        <div class="item-main"><span class="item-name">REDBULL</span><span class="item-price">€3.00</span></div>
+    </div>
+
+    <div class="item">
+        <div class="item-main"><span class="item-name">SCHWEPPES LEMON</span><span class="item-price">€2.50</span></div>
+    </div>
+
+    <div class="item">
+        <div class="item-main"><span class="item-name">SCHWEPPES TONICA</span><span class="item-price">€2.50</span></div>
+    </div>
+</div>
+
+<div class="category" onclick="toggleCategory('bottiglie')">
+    BOTTIGLIE <span>▾</span>
+</div>
+<div id="bottiglie" class="products">
+
+    <div style="margin-top: 10px; margin-bottom: 10px;">
+        <span style="font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted);">Bollicine</span>
+    </div>
+
+    <div class="item">
+        <div class="item-main"><span class="item-name">FERRARI*</span><span class="item-price">€60.00</span></div>
+    </div>
+
+    <div class="item">
+        <div class="item-main"><span class="item-name">MOËT & CHANDON*</span><span class="item-price">€150.00</span></div>
+    </div>
+
+    <div class="item">
+        <div class="item-main"><span class="item-name">PROSECCO MIONETTO ARANCIONE</span><span class="item-price">€30.00</span></div>
+    </div>
+
+    <div class="item">
+        <div class="item-main"><span class="item-name">PROSECCO MIONETTO BLU</span><span class="item-price">€25.00</span></div>
+    </div>
+
+    <div class="item">
+        <div class="item-main"><span class="item-name">PROSECCO MIONETTO MAGNUM* 1,5 L</span><span class="item-price">€50.00</span></div>
+    </div>
+
+    <div class="item">
+        <div class="item-main"><span class="item-name">PROSECCO MIONETTO SERGIO</span><span class="item-price">€40.00</span></div>
+    </div>
+
+    <div style="margin-top: 25px; border-top: 1px solid var(--border-color); padding-top: 10px;">
+        <span style="font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted);">Gin</span>
+    </div>
+
+    <div class="item">
+        <div class="item-main"><span class="item-name">GIN MARE 0,70 L</span><span class="item-price">€120.00</span></div>
+    </div>
+
+    <div class="item">
+        <div class="item-main"><span class="item-name">GIN MARE 1 L</span><span class="item-price">€150.00</span></div>
+    </div>
+
+    <div class="item">
+        <div class="item-main"><span class="item-name">HENDRICK'S 0,70 L</span><span class="item-price">€120.00</span></div>
+    </div>
+
+    <div class="item">
+        <div class="item-main"><span class="item-name">HENDRICK'S 1 L</span><span class="item-price">€150.00</span></div>
+    </div>
+
+    <div class="item">
+        <div class="item-main"><span class="item-name">TANQUERAY 0,70 L</span><span class="item-price">€100.00</span></div>
+    </div>
+
+    <div class="item">
+        <div class="item-main"><span class="item-name">TANQUERAY 1 L</span><span class="item-price">€120.00</span></div>
+    </div>
+
+    <div style="margin-top: 25px; border-top: 1px solid var(--border-color); padding-top: 10px;">
+        <span style="font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted);">Vodka</span>
+    </div>
+
+    <div class="item">
+        <div class="item-main"><span class="item-name">BELVEDERE 0,70 L</span><span class="item-price">€120.00</span></div>
+    </div>
+
+    <div class="item">
+        <div class="item-main"><span class="item-name">BELVEDERE 1 L</span><span class="item-price">€150.00</span></div>
+    </div>
+
+    <div class="item">
+        <div class="item-main"><span class="item-name">GREY GOOSE 0,70 L</span><span class="item-price">€120.00</span></div>
+    </div>
+
+    <div class="item">
+        <div class="item-main"><span class="item-name">GREY GOOSE 1 L</span><span class="item-price">€150.00</span></div>
+    </div>
+
+    <div class="item">
+        <div class="item-main"><span class="item-name">ICEBERG F-P 1 L</span><span class="item-price">€100.00</span></div>
+    </div>
+
+    <div class="item">
+        <div class="item-main"><span class="item-name">SKYY 1 L</span><span class="item-price">€100.00</span></div>
+    </div>
+
+    <div style="margin-top: 20px; padding: 15px; background: rgba(255,255,255,0.05); border-radius: 8px; text-align: center;">
+        <p style="margin: 0; font-size: 0.85rem; color: var(--text-white); font-weight: bold;">
+            Tutte le bottiglie di Gin e Vodka comprendono i drink per la miscelazione:
+        </p>
+        <p style="margin: 5px 0 0 0; font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase;">
+            Tonica, Lemon, Red Bull
+        </p>
+    </div>
+</div>
+</div>
+</div>
+</div>
+    <footer>
+<div style="margin-bottom: 25px; padding: 10px; border-top: 1px solid var(--border-color);">
+        <p style="font-size: 0.8rem; color: var(--text-muted); font-style: italic; line-height: 1.4;">
+            * I prodotti contrassegnati con l'asterisco potrebbero non essere disponibili in alcuni periodi dell'anno a causa della loro stagionalità o periodicità.
+        </p>
+    </div>
+        <div class="contact-info">
+            📍 Piazza Rino Gaetano<br>
+Cutro - KR<br>
+            📞 +39 3500491487
+        </div>
+       <div class="social-links">
+    <a href="https://www.instagram.com/_keste_?igsh=MTFkMjlmMWJxN2s3dg==" class="social-btn" target="_blank">
+        <img src="INSTA1.png" alt="Instagram">
+    </a>
+    
+    <a href="https://www.facebook.com/share/1CNoPEqDbs/?mibextid=wwXIfr" class="social-btn" target="_blank">
+        <img src="FB1.png" alt="Facebook">
+    </a>
+</div>
+
+<script>
+    function toggleCategory(id) {
+        const section = document.getElementById(id);
+        const isOpen = section.style.display === "block";
+        document.querySelectorAll('.products').forEach(p => p.style.display = 'none');
+        if (!isOpen) { section.style.display = "block"; }
+    }
+</script>
+
+</body>
+</html>
